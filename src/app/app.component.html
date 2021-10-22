@@ -1,0 +1,76 @@
+<section>
+  <div class="mortage-calculator-div">
+    <h1>Mortage Calculator</h1>
+    <div class="form-container">
+      <form>
+        <div class="inputs-container">
+          <div class="input-container">
+            <label for="purchase price"
+              >Purchase price:<span> ${{ purchasePrice }}</span></label
+            >
+            <input
+              type="range"
+              name="purchase price"
+              min="1"
+              max="1000000"
+              [(ngModel)]="purchasePrice"
+            />
+          </div>
+          <div class="input-container">
+            <label for="down payment"
+              >Down payment:<span> ${{ downPayment }}</span></label
+            >
+            <input
+              type="range"
+              name="down payment"
+              min="0"
+              max="1000000"
+              [(ngModel)]="downPayment"
+              step="1000"
+            />
+          </div>
+          <div class="input-container">
+            <label for="repayment time"
+              >Repayment time:<span> {{ repaymentTime }} year(s)</span></label
+            >
+            <input
+              type="range"
+              name="repayment time"
+              min="1"
+              max="30"
+              [(ngModel)]="repaymentTime"
+            />
+          </div>
+          <div class="input-container">
+            <label for="interest rate"
+              >Interest rate:<span> {{ interestRate }}%</span></label
+            >
+            <input
+              type="range"
+              name="interest rate"
+              min="1"
+              max="15"
+              [(ngModel)]="interestRate"
+            />
+          </div>
+          <div class="input-container">
+            <label for="loan amount">Loan amount</label>
+            <span class="span-big">${{ loanAmount }}</span>
+          </div>
+          <div class="input-container">
+            <label for="loan amount">Estimated pr. Month</label>
+            <span class="span-big">${{ monthlyMortage }}</span>
+          </div>
+        </div>
+        <button (click)="allFunctionCalls()">Get a mortage quote</button>
+      </form>
+    </div>
+    <span class="error" [ngClass]="[isError ? 'error-show' : 'error-hide']">
+      There is something wrong with your entries!<br />
+      Please make sure to select the correct data in every field.<br />
+      Please make sure you've selected the values for Purchase Price, Loan
+      Amount(Should be less than purchase price), repayment time and interest
+      rate.
+    </span>
+  </div>
+</section>
